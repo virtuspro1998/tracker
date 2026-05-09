@@ -344,7 +344,7 @@ function rI(){
   var mths=Object.keys(mo).sort().reverse();
   if(mths.indexOf(iMo)<0){iMo=mths[0]||'2026-05';}
   var mh='';
-  for(var b=0;b<mths.length;b++){mh+='<button class="mc '+(mths[b]===iMo?'on':'')+'" onclick="siM(''+mths[b]+'')">'+mn(mths[b])+' '+mths[b].split('-')[0]+'</button>';}
+  for(var b=0;b<mths.length;b++){mh+='<button class="mc '+(mths[b]===iMo?'on':'')+'" onclick="siM(&apos;'+mths[b]+'&apos;)">'+mn(mths[b])+' '+mths[b].split('-')[0]+'</button>';}
   document.getElementById('im').innerHTML=mh;
   var items=[];
   for(var c=0;c<inc.length;c++){if(inc[c].mo===iMo){items.push(inc[c]);}}
@@ -369,7 +369,7 @@ function rI(){
     for(var g2=0;g2<ci.length;g2++){
       var bk=ci[g2].st==='received'?'<span class="bk bg">OK '+fd(ci[g2].rd)+'</span>':ci[g2].st==='late'?'<span class="bk br2">Задержка</span>':'<span class="bk bo">до 10-го</span>';
       var cl=ci[g2].st==='received'?'cg':ci[g2].st==='late'?'cr':'co';
-      h+='<div class="it" onclick="edI(''+ci[g2].id+'')"><div class="itl"><div class="itn">'+ci[g2].desc+'</div><div style="margin-top:3px">'+bk+'</div></div><div class="itr"><div class="ita '+cl+'">'+rub(ci[g2].ra||ci[g2].amt)+'</div></div></div>';
+      h+='<div class="it" onclick="edI(&apos;'+ci[g2].id+'&apos;)"><div class="itl"><div class="itn">'+ci[g2].desc+'</div><div style="margin-top:3px">'+bk+'</div></div><div class="itr"><div class="ita '+cl+'">'+rub(ci[g2].ra||ci[g2].amt)+'</div></div></div>';
     }
   }
   el.innerHTML=h;
@@ -383,7 +383,7 @@ function rE(){
   var mths=Object.keys(mo).sort().reverse();
   if(mths.indexOf(eMo)<0){eMo=mths[0]||'2026-05';}
   var mh='';
-  for(var b=0;b<mths.length;b++){mh+='<button class="mc '+(mths[b]===eMo?'on':'')+'" onclick="seM(''+mths[b]+'')">'+mn(mths[b])+' '+mths[b].split('-')[0]+'</button>';}
+  for(var b=0;b<mths.length;b++){mh+='<button class="mc '+(mths[b]===eMo?'on':'')+'" onclick="seM(&apos;'+mths[b]+'&apos;)">'+mn(mths[b])+' '+mths[b].split('-')[0]+'</button>';}
   document.getElementById('em').innerHTML=mh;
   var items=[];
   for(var c=0;c<exp.length;c++){if(exp[c].mo===eMo){items.push(exp[c]);}}
@@ -425,7 +425,7 @@ function rT(){
     var pc=x.orig>0?Math.round(x.paid/x.orig*100):0;
     var col=pc>=80?'var(--g)':pc>=40?'var(--o)':'var(--r)';
     var ex=x.tp==='c'?'<div style="font-size:10px;color:var(--o)">~'+rub(Math.round(l*0.2/12))+'/мес</div>':'';
-    return '<div class="dc" onclick="pyD(''+x.id+'')"><div class="dh"><div><div class="dn">'+x.name+'</div><div class="dp">'+rub(x.orig)+'</div></div><div style="text-align:right"><div class="da cr">'+rub(l)+'</div>'+ex+'</div></div><div class="db"><div class="dbf" style="width:'+pc+'%;background:'+col+'"></div></div><div class="df"><span>Оплачено '+rub(x.paid)+'</span><span>'+pc+'%</span></div></div>';
+    return '<div class="dc" onclick="pyD(&apos;'+x.id+'&apos;)"><div class="dh"><div><div class="dn">'+x.name+'</div><div class="dp">'+rub(x.orig)+'</div></div><div style="text-align:right"><div class="da cr">'+rub(l)+'</div>'+ex+'</div></div><div class="db"><div class="dbf" style="width:'+pc+'%;background:'+col+'"></div></div><div class="df"><span>Оплачено '+rub(x.paid)+'</span><span>'+pc+'%</span></div></div>';
   }
   var p='',c='';
   for(var e=0;e<dbt.length;e++){if(dbt[e].tp==='p'){p+=mk(dbt[e]);}else{c+=mk(dbt[e]);}}
@@ -454,7 +454,7 @@ function rR(){
   for(var b=0;b<dtr.length;b++){
     var l=Math.max(0,dtr[b].amt-dtr[b].got);
     var pc=dtr[b].amt>0?Math.round(dtr[b].got/dtr[b].amt*100):0;
-    h+='<div class="dc" onclick="gtD(''+dtr[b].id+'')"><div class="dh"><div><div class="dn">'+dtr[b].name+'</div><div class="dp">'+(dtr[b].note||'')+'</div></div><div style="text-align:right"><div class="da cp">'+rub(l)+'</div><span class="bk bp">Ожидаю</span></div></div><div class="db"><div class="dbf" style="width:'+pc+'%;background:var(--g)"></div></div><div class="df"><span>Получено '+rub(dtr[b].got)+'</span><span>'+pc+'%</span></div></div>';
+    h+='<div class="dc" onclick="gtD(&apos;'+dtr[b].id+'&apos;)"><div class="dh"><div><div class="dn">'+dtr[b].name+'</div><div class="dp">'+(dtr[b].note||'')+'</div></div><div style="text-align:right"><div class="da cp">'+rub(l)+'</div><span class="bk bp">Ожидаю</span></div></div><div class="db"><div class="dbf" style="width:'+pc+'%;background:var(--g)"></div></div><div class="df"><span>Получено '+rub(dtr[b].got)+'</span><span>'+pc+'%</span></div></div>';
   }
   el.innerHTML=h;
 }
